@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "183f7b60-f43c-436f-b99e-3e895f72c141"
+      }
+    },
+    "owner": "beagleplus"
   }
 }
