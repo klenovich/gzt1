@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import { Button, TextInput, View, Text } from "react-native";
+import { OpenAi } from 'openai';
+
+const openai = new OpenAi('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');
+
+async function getGpt3Response(message) {
+  const gptResponse = await openai.complete({
+    engine: 'davinci',
+    prompt: message,
+    maxTokens: 60,
+  });
+  return gptResponse.data.choices[0].text.trim();
+}
 
 const ChatScreen = () => {
   const [message, setMessage] = useState("");
@@ -11,6 +23,7 @@ const ChatScreen = () => {
       
       const gpt3Response = await getGpt3Response(message);
       setMessages([...messages, { user: 'GPT-3', text: gpt3Response }]);
+      
       setMessage("");
     }
   };
